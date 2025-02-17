@@ -7,6 +7,8 @@ import React from "react";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
+
+  // Navigation Menu Items
   const navMenu = (
     <>
       <li>
@@ -27,15 +29,17 @@ const Navbar = () => {
       <ul className="flex items-center justify-end gap-3">
         {status === "authenticated" ? (
           <>
-            <li>
-              <Image
-              className="rounded-full"
-                src={session?.user?.image}
-                width={70}
-                height={70}
-                alt="user"
-              />{" "}
-            </li>
+            {session?.user?.image && (
+              <li>
+                <Image
+                  className="rounded-full"
+                  src={session.user.image} // Ensure the src is valid
+                  width={70}
+                  height={70}
+                  alt="User"
+                />
+              </li>
+            )}
             <li onClick={() => signOut()} className="btn btn-neutral btn-sm">
               Logout
             </li>
@@ -87,7 +91,13 @@ const Navbar = () => {
             </ul>
           </div>
           <Link href={"/"} className="text-xl">
-            <Image src={"/assets/logo.svg"} width={70} height={65} alt="logo" />
+            {/* Ensure the image source is correct */}
+            <Image
+              src="/assets/logo.svg" // Make sure the logo path is correct
+              width={70}
+              height={65}
+              alt="Logo"
+            />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">

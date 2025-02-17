@@ -1,14 +1,21 @@
 "use client";
 
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-import loginLottie from "../../../../public/loginLottie.json";
+import loginLottieData from "../../../../public/loginLottie.json";
 import SocialLogin from "../register/components/SocialLogin";
+
+// ✅ Dynamically import Lottie to prevent SSR issues
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 const Login = () => {
   const router = useRouter();
+
+  // ✅ Ensure Lottie has valid data
+  const loginLottie = loginLottieData ? loginLottieData : null;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,10 +30,9 @@ const Login = () => {
         redirect: false,
       });
 
-      if (response.ok) {
+      if (response?.ok) {
         router.push("/");
         form.reset();
-
         Swal.fire({
           position: "center",
           icon: "success",
@@ -56,9 +62,11 @@ const Login = () => {
   return (
     <div className="w-11/12 mx-auto my-10">
       <h2 className="text-4xl text-center font-bold">Login</h2>
-      <div className=" flex flex-col-reverse md:grid grid-cols-12">
+      <div className="flex flex-col-reverse md:grid grid-cols-12">
         <div className="w-[70%] col-span-6">
-          <Lottie animationData={loginLottie} loop={true} />
+          {loginLottie ? (
+            <Lottie animationData={loginLottie} loop={true} />
+          ) : null}
         </div>
         <div className="col-span-6">
           <form onSubmit={handleSubmit} className="card-body">

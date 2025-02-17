@@ -1,12 +1,13 @@
 "use client";
 
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 
 const BookingUpdateForm = ({ data }) => {
   const { data: session } = useSession();
-  console.log(session);
+  const router = useRouter();
 
   const handleBookService = async (e) => {
     toast("Submitting Booking...");
@@ -33,13 +34,16 @@ const BookingUpdateForm = ({ data }) => {
       // service_price: data.price,
     };
 
-    console.log(bookingPayload);
-    const res = await fetch("http://localhost:3000/api/service", {
-      method: "POST",
-      body: JSON.stringify(bookingPayload),
-    });
+    const res = await fetch(
+      `https://nextjs-car-doctor-mu.vercel.app/api/myBookings/${data._id}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify(bookingPayload),
+      }
+    );
     const postedResponse = await res.json();
-    console.log("POSTED DATA", postedResponse);
+    router.push("/myBookings");
+    console.log("UPDATED DATA", postedResponse);
   };
 
   return (
