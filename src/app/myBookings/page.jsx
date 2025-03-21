@@ -5,7 +5,7 @@ import React from "react";
 
 const fetchMyBookings = async () => {
   const res = await fetch(
-    "https://nextjs-car-doctor-mu.vercel.app/api/service",
+    "http://localhost:3000/api/service",
     {
       headers: new Headers(await headers()),
     }

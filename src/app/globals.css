@@ -10,3 +10,24 @@
     rgba(29, 29, 33, 0.57484243697479) 25%
   );
 }
+
+.image1-bg {
+  background: rgb(29, 29, 33);
+  background: linear-gradient(
+    96deg,
+    rgba(29, 29, 33, 0.57484243697479) 67%,
+    rgba(6, 5, 36, 1) 98%,
+    rgba(2, 0, 36, 1) 100%
+  );
+}
+
+.image2-bg {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    96deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(6, 5, 36, 1) 0%,
+    rgba(12, 12, 35, 0.3983718487394958) 47%,
+    rgba(29, 29, 33, 0.57484243697479) 100%
+  );
+}

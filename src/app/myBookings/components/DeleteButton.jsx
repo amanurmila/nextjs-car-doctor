@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const DeleteButton = ({ id }) => {
   const router = useRouter();
   const handleDelete = async (id) => {
-    const res = await fetch(`https://nextjs-car-doctor-mu.vercel.app/api/service/${id}`, {
+    const res = await fetch(`http://localhost:3000/api/service/${id}`, {
       method: "DELETE",
     });
     const data = await res.json();
