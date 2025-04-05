@@ -1,10 +1,10 @@
 <div align="center">
-  <img height="500" src="https://i.ibb.co.com/sJg2bvSh/car-doctor.png"  />
+  <img height="500" src="https://i.ibb.co/sJg2bvSh/car-doctor.png" />
 </div>
 
 ###
 
-<img align="right" height="400" src="https://i.ibb.co.com/LDFnk3kq/car-mob.png"  />
+<img height="400" align="right" src="https://i.ibb.co/LDFnk3kq/car-mob.png" />
 
 ###
 
